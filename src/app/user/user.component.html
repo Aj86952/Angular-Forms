@@ -1,0 +1,67 @@
+<h1>Form Validations</h1>
+
+<form
+  class="container w-50"
+  #myForm="ngForm"
+  (ngSubmit)="handleSubmit(myForm.value)"
+>
+  <label class="form-label">Name :</label>
+  <input
+    type="text"
+    class="form-control"
+    name="name"
+    #name="ngModel"
+    required
+    ngModel
+  />
+  <small class="color" *ngIf="name.invalid && name.touched"
+    >Name is required</small
+  ><br />
+
+  <label class="form-label">Email :</label>
+  <input
+    type="text"
+    class="form-control"
+    name="email"
+    #email="ngModel"
+    email
+    required
+    ngModel
+  />
+  <small class="color" *ngIf="email.invalid && email.touched"
+    >Email is required</small
+  ><br />
+
+  <label class="form-label">Mobile :</label>
+  <input
+    type="text"
+    class="form-control"
+    name="mobile"
+    minlength="10"
+    maxlength="10"
+    #mobile="ngModel"
+    required
+    ngModel
+  />
+  <small class="color" *ngIf="mobile.invalid && mobile.touched"
+    >Mobile is required</small
+  ><br />
+
+  <label class="form-label">Address :</label>
+  <input
+    type="text"
+    class="form-control"
+    name="address"
+    pattern="[a-zA-z ]*"
+    #address="ngModel"
+    required
+    ngModel
+  />
+  <small class="color" *ngIf="address.invalid && address.touched"
+    >Address is required</small
+  ><br />
+
+  <button type="submit" class="btn btn-info" [disabled]="myForm.invalid">
+    Submit
+  </button>
+</form>
